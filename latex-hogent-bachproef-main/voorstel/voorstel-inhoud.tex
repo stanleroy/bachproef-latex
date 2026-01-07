@@ -1,84 +1,174 @@
 %---------- Inleiding ---------------------------------------------------------
 
-% TODO: Is dit voorstel gebaseerd op een paper van Research Methods die je
-% vorig jaar hebt ingediend? Heb je daarbij eventueel samengewerkt met een
-% andere student?
-% Zo ja, haal dan de tekst hieronder uit commentaar en pas aan.
-
-%\paragraph{Opmerking}
-
-% Dit voorstel is gebaseerd op het onderzoeksvoorstel dat werd geschreven in het
-% kader van het vak Research Methods dat ik (vorig/dit) academiejaar heb
-% uitgewerkt (met medesturent VOORNAAM NAAM als mede-auteur).
-% 
-
-\section{Inleiding}%
+\section{Inleiding}
 \label{sec:inleiding}
 
-Waarover zal je bachelorproef gaan? Introduceer het thema en zorg dat volgende zaken zeker duidelijk aanwezig zijn:
+Mainframe-gebaseerde betalingssystemen vormen een essentieel onderdeel van de
+IT-infrastructuur binnen banken. Dagelijks verwerken deze systemen een zeer groot
+volume aan financiële transacties, waarbij hoge eisen worden gesteld aan
+beschikbaarheid, betrouwbaarheid en performantie. Binnen het Europese
+betalingsverkeer speelt de SEPA Direct Debit-verwerking hierbij een belangrijke
+rol, aangezien deze systemen op vaste tijdsvensters grote hoeveelheden
+betalingen moeten verwerken \autocite{Hartel2015SEPA}. Ondanks hun robuuste
+architectuur worden dergelijke systemen tijdens specifieke piekmomenten, zoals
+periodes van verhoogd elektronisch betalingsverkeer of batchverwerking,
+geconfronteerd met een aanzienlijke toename in belasting.
 
-\begin{itemize}
-  \item kaderen thema
-  \item de doelgroep
-  \item de probleemstelling en (centrale) onderzoeksvraag
-  \item de onderzoeksdoelstelling
-\end{itemize}
+Deze bachelorproef situeert zich binnen een bancaire context waarin een
+mainframe-omgeving wordt ingezet voor de verwerking van SEPA Direct Debit
+betalingen. De doelgroep van deze bachelorproef bestaat uit mainframe developers,
+systeembeheerders en performance engineers die betrokken zijn bij het beheer en
+de optimalisatie van betalingsverwerkende systemen. In het bijzonder richt dit
+onderzoek zich op teams die verantwoordelijk zijn voor het analyseren van de
+performantie-impact van wijzigingen aan bestaande toepassingen, processen of
+scherminterfaces binnen een operationele mainframe-omgeving.
 
-Denk er aan: een typische bachelorproef is \textit{toegepast onderzoek}, wat betekent dat je start vanuit een concrete probleemsituatie in bedrijfscontext, een \textbf{casus}. Het is belangrijk om je onderwerp goed af te bakenen: je gaat voor die \textit{ene specifieke probleemsituatie} op zoek naar een goede oplossing, op basis van de huidige kennis in het vakgebied.
+{\color{red}
+De centrale probleemstelling van deze bachelorproef is het gebrek aan inzicht in
+de oorzaken en het gedrag van piekbelasting binnen mainframe-gebaseerde
+betalingssystemen. Dit bemoeilijkt het gericht optimaliseren van deze systemen en
+kan leiden tot verhoogde responstijden en een verminderde
+verwerkingscapaciteit tijdens piekmomenten.
+}
 
-De doelgroep moet ook concreet en duidelijk zijn, dus geen algemene of vaag gedefinieerde groepen zoals \emph{bedrijven}, \emph{developers}, \emph{Vlamingen}, enz. Je richt je in elk geval op it-professionals, een bachelorproef is geen populariserende tekst. Eén specifiek bedrijf (die te maken hebben met een concrete probleemsituatie) is dus beter dan \emph{bedrijven} in het algemeen.
+De doelstelling van deze bachelorproef is het analyseren van piekbelasting binnen
+een mainframe-gebaseerd betalingsysteem en het onderzoeken van
+optimalisatietechnieken die de systeemprestaties tijdens piekmomenten kunnen
+verbeteren. Het eindresultaat bestaat uit een technisch rapport met analyse,
+visualisaties en onderbouwde aanbevelingen die toepasbaar zijn binnen een
+bancaire mainframe-context.
 
-Formuleer duidelijk de onderzoeksvraag! De begeleiders lezen nog steeds te veel voorstellen waarin we geen onderzoeksvraag terugvinden.
+%---------- Probleemstelling --------------------------------------------------
 
-Schrijf ook iets over de doelstelling. Wat zie je als het concrete eindresultaat van je onderzoek, naast de uitgeschreven scriptie? Is het een proof-of-concept, een rapport met aanbevelingen, \ldots Met welk eindresultaat kan je je bachelorproef als een succes beschouwen?
+\section{Probleemstelling}
 
-%---------- Stand van zaken ---------------------------------------------------
+{\color{red}
+Binnen banken spelen mainframe-gebaseerde betalingssystemen een cruciale rol in de
+verwerking van financiële transacties. Tijdens periodes van verhoogd
+betalingsverkeer ontstaat er piekbelasting op deze systemen, wat zich kan uiten
+in verhoogde responstijden, hoge CPU- en I/O-belasting en een verminderde
+verwerkingscapaciteit.
 
-\section{Literatuurstudie}%
+Naast externe factoren, zoals een stijgend aantal gelijktijdige transacties, kan
+ook de interne efficiëntie van bestaande systeemcomponenten bijdragen aan deze
+problematiek. In het bijzonder kunnen legacy COBOL-programma’s binnen de
+SEPA-verwerkingsketen een disproportionele impact hebben op de systeemprestaties
+tijdens piekmomenten. Een gebrek aan inzicht in deze factoren vormt een concreet
+probleem binnen het beheer en de optimalisatie van bancaire
+mainframe-omgevingen.
+}
+
+%---------- Onderzoeksvraag ---------------------------------------------------
+
+\section{Onderzoeksvraag}
+
+{\color{red}
+Hoe kan piekbelasting in mainframe-gebaseerde betalingssystemen geanalyseerd
+worden en welke optimalisatietechnieken kunnen de systeemprestaties tijdens
+piekmomenten verbeteren?
+}
+
+\subsection*{Deelvragen – probleemdomein}
+
+{\color{red}
+\begin{enumerate}
+  \item Welke factoren veroorzaken piekbelasting in mainframe
+        betalingssystemen binnen een bancaire omgeving?
+  \item Welke performantiemetrieken zijn relevant om piekbelasting op
+        mainframes te analyseren?
+  \item Hoe manifesteert piekbelasting zich tijdens periodes van verhoogd
+        betalingsverkeer?
+  \item In welke mate dragen bestaande componenten, zoals legacy
+        COBOL-programma’s binnen de SEPA-verwerking, bij aan verhoogd
+        resourcegebruik tijdens piekmomenten?
+\end{enumerate}
+}
+
+\subsection*{Deelvragen – oplossingsdomein}
+
+{\color{red}
+\begin{enumerate}
+  \setcounter{enumi}{4}
+  \item Welke technieken en tools kunnen ingezet worden om piekbelasting in
+        mainframe betalingssystemen te analyseren?
+  \item Welke optimalisatiestrategieën kunnen toegepast worden om de prestaties
+        tijdens piekbelasting te verbeteren?
+  \item Wat is het meetbare effect van een geselecteerde optimalisatietechniek
+        in een gesimuleerde of operationele omgeving?
+\end{enumerate}
+}
+
+%---------- Literatuurstudie --------------------------------------------------
+
+\section{Literatuurstudie}
 \label{sec:literatuurstudie}
 
-Hier beschrijf je de \emph{state-of-the-art} rondom je gekozen onderzoeksdomein, d.w.z.\ een inleidende, doorlopende tekst over het onderzoeksdomein van je bachelorproef. Je steunt daarbij heel sterk op de professionele \emph{vakliteratuur}, en niet zozeer op populariserende teksten voor een breed publiek. Wat is de huidige stand van zaken in dit domein, en wat zijn nog eventuele open vragen (die misschien de aanleiding waren tot je onderzoeksvraag!)?
+Piekbelasting en performantieproblemen in grootschalige betalings- en
+transaction processing systemen vormen een belangrijk onderzoeksdomein binnen
+zowel academische als professionele vakliteratuur. Theoretische studies rond
+transaction processing tonen aan dat verhoogde workload, resource contention en
+complexe control flows een significante invloed hebben op responstijden en
+systeembelasting \autocite{SpringerTPPerf}.
 
-Je mag de titel van deze sectie ook aanpassen (literatuurstudie, stand van zaken, enz.). Zijn er al gelijkaardige onderzoeken gevoerd? Wat concluderen ze? Wat is het verschil met jouw onderzoek?
+Binnen mainframe-omgevingen wordt performantieanalyse typisch uitgevoerd aan de
+hand van systeembrede metrieken zoals CPU-gebruik, elapsed time en
+I/O-activiteit. Professionele vakliteratuur beschrijft hoe subsystemen zoals DB2
+een belangrijke rol spelen in de globale systeemprestaties, vooral in omgevingen
+met hoge transactiedichtheid en batchverwerking. IBM Redbooks benadrukken het
+belang van performantiemonitoring en capaciteitsplanning om piekbelasting
+beheersbaar te houden \autocite{IBMRedbookDB29Perf}.
 
-Verwijs bij elke introductie van een term of bewering over het domein naar de vakliteratuur, bijvoorbeeld~\autocite{Hykes2013}! Denk zeker goed na welke werken je refereert en waarom.
+Naast performantiemetingen op systeemniveau wijst recente academische literatuur
+op de complexiteit van legacy mainframe-toepassingen, in het bijzonder
+COBOL-programma’s met uitgebreide en moeilijk te doorgronden
+control flow-structuren. Agarwal et al.\ tonen aan dat deze complexiteit het
+analyseren van performantieproblemen bemoeilijkt en dat geavanceerde
+analyse- en visualisatietechnieken nodig zijn om inzicht te krijgen in kritieke
+codepaden en functionele hotspots \autocite{Agarwal2024ASE}.
 
-Draag zorg voor correcte literatuurverwijzingen! Een bronvermelding hoort thuis \emph{binnen} de zin waar je je op die bron baseert, dus niet er buiten! Maak meteen een verwijzing als je gebruik maakt van een bron. Doe dit dus \emph{niet} aan het einde van een lange paragraaf. Baseer nooit teveel aansluitende tekst op eenzelfde bron.
-
-Als je informatie over bronnen verzamelt in JabRef, zorg er dan voor dat alle nodige info aanwezig is om de bron terug te vinden (zoals uitvoerig besproken in de lessen Research Methods).
-
-% Voor literatuurverwijzingen zijn er twee belangrijke commando's:
-% \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
-%   geen onderdeel is van de zin.
-% \textcite{KEY} => Auteur (jaartal)  Gebruik dit als de auteursnaam wel een
-%   functie heeft in de zin (bv. ``Uit onderzoek door Doll & Hill (1954) bleek
-%   ...'')
-
-Je mag deze sectie nog verder onderverdelen in subsecties als dit de structuur van de tekst kan verduidelijken.
+Hoewel bestaande studies waardevolle inzichten bieden in performantieanalyse en
+applicatiecomplexiteit, ligt de focus vaak op algemene transaction processing
+systemen of moderniseringsvraagstukken. Er is minder onderzoek dat expliciet
+ingaat op piekbelasting binnen mainframe-gebaseerde betalingssystemen in een
+bancaire context, waarbij operationele meetgegevens worden gekoppeld aan zowel
+systeem- als applicatiecomponenten. Dit onderzoek onderscheidt zich door die
+specifieke focus en door de analyse van piekbelasting in relatie tot SEPA Direct
+Debit-verwerking binnen een operationele mainframe-omgeving.
 
 %---------- Methodologie ------------------------------------------------------
-\section{Methodologie}%
+
+\section{Methodologie}
 \label{sec:methodologie}
 
-Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor literatuurstudie, interviews met belanghebbenden (bv.~voor requirements-analyse), experimenten, simulaties, vergelijkende studie, risico-analyse, PoC, \ldots?
+Dit onderzoek volgt een toegepast onderzoeksmodel en vertrekt vanuit een concrete
+probleemsituatie binnen een bancaire mainframe-omgeving. In een eerste fase wordt
+een literatuurstudie uitgevoerd rond piekbelasting, performantieanalyse en
+optimalisatietechnieken binnen mainframe betalingssystemen.
 
-Valt je onderwerp onder één van de typische soorten bachelorproeven die besproken zijn in de lessen Research Methods (bv.\ vergelijkende studie of risico-analyse)? Zorg er dan ook voor dat we duidelijk de verschillende stappen terug vinden die we verwachten in dit soort onderzoek!
+In het praktijkgerichte luik wordt, indien mogelijk, een gesimuleerde
+piekbelasting opgezet binnen een test- of simulatieomgeving. Tijdens deze
+simulatie worden performantiemetingen uitgevoerd met aandacht voor CPU-,
+I/O- en responstijdmetingen. Indien mogelijk wordt ook bestaande legacy
+COBOL-code binnen een SEPA-context geanalyseerd om performantiegevoelige
+componenten te identificeren. Indien een volledige simulatie niet haalbaar
+blijkt, wordt de analyse uitgevoerd op basis van beschikbare meetgegevens en
+historische performantiemetingen uit de operationele omgeving.
 
-Vermijd onderzoekstechnieken die geen objectieve, meetbare resultaten kunnen opleveren. Enquêtes, bijvoorbeeld, zijn voor een bachelorproef informatica meestal \textbf{niet geschikt}. De antwoorden zijn eerder meningen dan feiten en in de praktijk blijkt het ook bijzonder moeilijk om voldoende respondenten te vinden. Studenten die een enquête willen voeren, hebben meestal ook geen goede definitie van de populatie, waardoor ook niet kan aangetoond worden dat eventuele resultaten representatief zijn.
+Vervolgens wordt een gerichte optimalisatie toegepast, waarna de metingen opnieuw
+worden uitgevoerd. De resultaten vóór en na de optimalisatie worden met elkaar
+vergeleken om het effect van de gekozen ingreep te evalueren.
 
-Uit dit onderdeel moet duidelijk naar voor komen dat je bachelorproef ook technisch voldoen\-de diepgang zal bevatten. Het zou niet kloppen als een bachelorproef informatica ook door bv.\ een student marketing zou kunnen uitgevoerd worden.
+%---------- Verwachte resultaten ---------------------------------------------
 
-Je beschrijft ook al welke tools (hardware, software, diensten, \ldots) je denkt hiervoor te gebruiken of te ontwikkelen.
-
-Probeer ook een tijdschatting te maken. Hoe lang zal je met elke fase van je onderzoek bezig zijn en wat zijn de concrete \emph{deliverables} in elke fase?
-
-%---------- Verwachte resultaten ----------------------------------------------
-\section{Verwacht resultaat, conclusie}%
+\section{Verwacht resultaat en conclusie}
 \label{sec:verwachte_resultaten}
 
-Hier beschrijf je welke resultaten je verwacht. Als je metingen en simulaties uitvoert, kan je hier al mock-ups maken van de grafieken samen met de verwachte conclusies. Benoem zeker al je assen en de onderdelen van de grafiek die je gaat gebruiken. Dit zorgt ervoor dat je concreet weet welk soort data je moet verzamelen en hoe je die moet meten.
+Het verwachte resultaat van deze bachelorproef is een duidelijk inzicht in de
+oorzaken en impact van piekbelasting binnen mainframe-gebaseerde
+betalingssystemen. Door analyse en visualisatie van performantiemetingen worden
+kritieke knelpunten geïdentificeerd.
 
-Wat heeft de doelgroep van je onderzoek aan het resultaat? Op welke manier zorgt jouw bachelorproef voor een meerwaarde?
-
-Hier beschrijf je wat je verwacht uit je onderzoek, met de motivatie waarom. Het is \textbf{niet} erg indien uit je onderzoek andere resultaten en conclusies vloeien dan dat je hier beschrijft: het is dan juist interessant om te onderzoeken waarom jouw hypothesen niet overeenkomen met de resultaten.
-
+De bachelorproef resulteert in een technisch rapport met concrete aanbevelingen
+voor het optimaliseren van mainframe betalingssystemen tijdens piekbelasting.
+Deze aanbevelingen bieden een meerwaarde voor IT-professionals die betrokken zijn
+bij het beheer en de optimalisatie van dergelijke systemen.

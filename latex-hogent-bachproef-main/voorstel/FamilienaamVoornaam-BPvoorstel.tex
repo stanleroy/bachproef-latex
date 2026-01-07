@@ -20,14 +20,15 @@
 % \course{Bachelor thesis}
 % \assignmenttype{Research proposal}
 
-\academicyear{2022-2023} % TODO: pas het academiejaar aan
+\academicyear{2025-2026} % TODO: pas het academiejaar aan
 
 % TODO: Werktitel
-\title{Vul hier de voorgestelde titel van je onderzoek in}
+\title{Analyse en optimalisatie van piekbelasting op mainframe betalingssystemen}
+
 
 % TODO: Studentnaam en emailadres invullen
-\author{Ernst Aarden}
-\email{ernst.aarden@student.hogent.be}
+\author{Stan Le Roy}
+\email{stan.leroy@student.hogent.be}
 
 % TODO: Medestudent
 % Gaat het om een bachelorproef in samenwerking met een student in een andere
@@ -36,7 +37,7 @@
 % \email{yasmine.alaoui@student.hogent.be}
 
 % TODO: Geef de co-promotor op
-\supervisor[Co-promotor]{S. Beekman (Synalco, \href{mailto:sigrid.beekman@synalco.be}{sigrid.beekman@synalco.be})}
+\supervisor[Co-promotor]{onder voorbehoud}
 
 % Binnen welke specialisatierichting uit 3TI situeert dit onderzoek zich?
 % Kies uit deze lijst:
@@ -49,13 +50,34 @@
 % - Als het onderzoek niet past binnen een van deze domeinen specifieer je deze
 %   zelf
 %
-\specialisation{Mobile \& Enterprise development}
-\keywords{Scheme, World Wide Web, $\lambda$-calculus}
+\specialisation{Mainframe Expert}
+\keywords{mainframe, SEPA Direct Debit, piekbelasting, performantieanalyse, z/OS}
 
 \begin{document}
 
 \begin{abstract}
-  Hier schrijf je de samenvatting van je voorstel, als een doorlopende tekst van één paragraaf. Let op: dit is geen inleiding, maar een samenvattende tekst van heel je voorstel met inleiding (voorstelling, kaderen thema), probleemstelling en centrale onderzoeksvraag, onderzoeksdoelstelling (wat zie je als het concrete resultaat van je bachelorproef?), voorgestelde methodologie, verwachte resultaten en meerwaarde van dit onderzoek (wat heeft de doelgroep aan het resultaat?).
+Mainframe-gebaseerde betalingssystemen spelen een cruciale rol binnen de bancaire
+IT-infrastructuur en verwerken dagelijks grote volumes aan financiële transacties.
+Tijdens specifieke periodes van verhoogd betalingsverkeer worden deze systemen
+geconfronteerd met piekbelasting, wat kan leiden tot verhoogde responstijden en
+verminderde verwerkingscapaciteit. Binnen het Europese betalingsverkeer is dit
+bijzonder relevant voor de SEPA Direct Debit-verwerking, waar vaste
+verwerkingstijdvensters en hoge transactiedichtheid samenkomen.
+
+Deze bachelorproef onderzoekt hoe piekbelasting binnen mainframe-gebaseerde
+betalingssystemen geanalyseerd kan worden en welke optimalisatietechnieken kunnen
+bijdragen aan betere systeemprestaties tijdens piekmomenten. Het onderzoek
+combineert een literatuurstudie rond performantieanalyse en transaction processing
+met een praktijkgericht luik waarin piekbelasting wordt geanalyseerd aan de hand
+van meetgegevens en, indien mogelijk, gesimuleerde workloads. Daarnaast wordt
+aandacht besteed aan de performantie-impact van legacy COBOL-componenten binnen
+de SEPA-verwerkingsketen.
+
+Het resultaat van deze bachelorproef is een technisch onderbouwd rapport met
+analyse, visualisaties en concrete aanbevelingen voor het optimaliseren van
+mainframe-gebaseerde betalingssystemen. Dit onderzoek biedt praktische meerwaarde
+voor mainframe developers, systeembeheerders en performance engineers die betrokken
+zijn bij het beheer en de optimalisatie van bancaire betalingsplatformen.
 \end{abstract}
 
 \tableofcontents
