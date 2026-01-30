@@ -23,7 +23,7 @@
 \academicyear{2025-2026} % TODO: pas het academiejaar aan
 
 % TODO: Werktitel
-\title{Analyse en optimalisatie van piekbelasting op mainframe betalingssystemen}
+\title{Analyse en optimalisatie van planning en rapportering van langdurige geautomatiseerde testen binnen een CI/CD-omgeving}
 
 
 % TODO: Studentnaam en emailadres invullen
@@ -37,7 +37,7 @@
 % \email{yasmine.alaoui@student.hogent.be}
 
 % TODO: Geef de co-promotor op
-\supervisor[Co-promotor]{onder voorbehoud}
+\supervisor[Co-promotor]{Stijn Sibiet, Jaimy Declercq}
 
 % Binnen welke specialisatierichting uit 3TI situeert dit onderzoek zich?
 % Kies uit deze lijst:
@@ -50,35 +50,37 @@
 % - Als het onderzoek niet past binnen een van deze domeinen specifieer je deze
 %   zelf
 %
-\specialisation{Mainframe Expert}
-\keywords{mainframe, SEPA Direct Debit, piekbelasting, performantieanalyse, z/OS}
+\specialisation{Mobile \& Enterprise development}
+\keywords{CI/CD, testautomatisering, Jenkins, langdurige testen, testrapportering}
 
 \begin{document}
 
 \begin{abstract}
-Mainframe-gebaseerde betalingssystemen spelen een cruciale rol binnen de
-bancaire IT-infrastructuur en verwerken dagelijks grote volumes aan
-financiële transacties. Tijdens specifieke periodes van verhoogd
-betalingsverkeer worden deze systemen geconfronteerd met piekbelasting,
-wat kan leiden tot verhoogde responstijden en verminderde
-verwerkingscapaciteit. Binnen het Europese betalingsverkeer is dit
-bijzonder relevant voor de SEPA Direct Debit-verwerking, waar vaste
-verwerkingstijdvensters en een hoge transactiedichtheid samenkomen.
-Deze bachelorproef onderzoekt hoe piekbelasting binnen
-mainframe-gebaseerde betalingssystemen geanalyseerd kan worden en welke
-optimalisatietechnieken kunnen bijdragen aan betere systeemprestaties
-tijdens piekmomenten. Het onderzoek combineert een literatuurstudie rond
-performantieanalyse en transaction processing met een praktijkgericht
-luik waarin piekbelasting wordt geanalyseerd aan de hand van
-meetgegevens en, indien mogelijk, gesimuleerde workloads. Daarbij wordt
-specifieke aandacht besteed aan de performantie-impact van legacy
-COBOL-componenten binnen de SEPA-verwerkingsketen. Het resultaat van
-deze bachelorproef is een technisch onderbouwd rapport met analyse,
-visualisaties en concrete aanbevelingen voor het optimaliseren van
-mainframe-gebaseerde betalingssystemen. Dit onderzoek biedt praktische
-meerwaarde voor mainframe developers, systeembeheerders en performance
-engineers die betrokken zijn bij het beheer en de optimalisatie van
-bancaire betalingsplatformen.
+Continue integratie en continue levering (CI/CD) zijn vandaag essentiële
+praktijken binnen moderne softwareontwikkeling en maken het mogelijk om
+software sneller en betrouwbaarder vrij te geven. Deze werkwijze steunt
+sterk op geautomatiseerd testen om de kwaliteit van software continu te
+bewaken. In industriële omgevingen kunnen bepaalde testen echter een lange
+uitvoeringstijd hebben, wat leidt tot vertraagde feedback, verhoogde
+belasting op buildinfrastructuur en verminderde efficiëntie van
+ontwikkelteams.
+Deze bachelorproef onderzoekt hoe langdurige testen binnen een
+CI/CD-omgeving strategisch kunnen worden ingepland en hoe de rapportering
+van deze testen kan worden verbeterd om bruikbare feedback voor
+ontwikkelaars te garanderen. Het onderzoek wordt uitgevoerd binnen de
+testomgeving van FLIR Systems Belgium en combineert een literatuurstudie
+rond CI/CD en testautomatisering met een praktijkgericht luik waarin de
+bestaande testaanpak wordt geanalyseerd.
+Op basis van deze analyse wordt een aanpak ontworpen voor het plannen,
+automatiseren en rapporteren van langdurige testen binnen een
+Jenkins-omgeving. Deze aanpak wordt gevalideerd via een proof of concept
+waarbij testen buiten piekuren worden ingepland en resultaten
+gestructureerd worden gerapporteerd. Het resultaat van deze bachelorproef
+is een technisch onderbouwd rapport met aanbevelingen voor een efficiënter
+beheer van langdurige testen binnen CI/CD-pijplijnen. Dit onderzoek biedt
+praktische meerwaarde voor ontwikkelteams en organisaties die streven naar
+snelle feedback, stabiele buildomgevingen en kwalitatieve
+testrapportering.
 \end{abstract}
 
 \noindent\textbf{GitHub-repository:}
@@ -89,7 +91,8 @@ bancaire betalingsplatformen.
 % De hoofdtekst van het voorstel zit in een apart bestand, zodat het makkelijk
 % kan opgenomen worden in de bijlagen van de bachelorproef zelf.
 \input{voorstel-inhoud}
-
+\nocite{*}
 \printbibliography[heading=bibintoc]
+
 
 \end{document}

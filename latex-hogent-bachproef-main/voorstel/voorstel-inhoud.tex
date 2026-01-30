@@ -3,59 +3,35 @@
 \section{Inleiding}
 \label{sec:inleiding}
 
-Mainframe-gebaseerde betalingssystemen vormen een essentieel onderdeel van de
-IT-infrastructuur binnen banken. Dagelijks verwerken deze systemen een zeer groot
-volume aan financiële transacties, waarbij hoge eisen worden gesteld aan
-beschikbaarheid, betrouwbaarheid en performantie. Binnen het Europese
-betalingsverkeer speelt de SEPA Direct Debit-verwerking hierbij een belangrijke
-rol, aangezien deze systemen op vaste tijdsvensters grote hoeveelheden
-betalingen moeten verwerken \autocite{Hartel2015SEPA}. Ondanks hun robuuste
-architectuur worden dergelijke systemen tijdens specifieke piekmomenten, zoals
-periodes van verhoogd elektronisch betalingsverkeer of batchverwerking,
-geconfronteerd met een aanzienlijke toename in belasting.
+Binnen moderne softwareontwikkeling spelen Continuous Integration en Continuous Delivery (CI/CD) een centrale rol in het snel en betrouwbaar opleveren van software. Organisaties maken steeds vaker gebruik van geautomatiseerde build- en testprocessen om codewijzigingen frequent te integreren en snel feedback te verkrijgen over de kwaliteit van hun software. Deze werkwijze ondersteunt korte ontwikkelcycli en verhoogt de betrouwbaarheid van softwareproducten.
 
-Deze bachelorproef situeert zich binnen een bancaire context waarin een
-mainframe-omgeving wordt ingezet voor de verwerking van SEPA Direct Debit
-betalingen. De doelgroep van deze bachelorproef bestaat uit mainframe developers,
-systeembeheerders en performance engineers die betrokken zijn bij het beheer en
-de optimalisatie van betalingsverwerkende systemen. In het bijzonder richt dit
-onderzoek zich op teams die verantwoordelijk zijn voor het analyseren van de
-performantie-impact van wijzigingen aan bestaande toepassingen, processen of
-scherminterfaces binnen een operationele mainframe-omgeving.
+Geautomatiseerd testen vormt een essentieel onderdeel van CI/CD-omgevingen. Door testen automatisch uit te voeren bij codewijzigingen kunnen fouten vroegtijdig worden opgespoord en kan de softwarekwaliteit beter bewaakt worden. Naarmate softwareprojecten groeien, neemt echter ook de omvang en complexiteit van testsets toe. Sommige testen vereisen aanzienlijke uitvoeringstijd en infrastructuur, wat bijkomende uitdagingen creëert voor de planning en opvolging ervan.
 
-{\color{red}
-De centrale probleemstelling van deze bachelorproef is het gebrek aan inzicht in
-de oorzaken en het gedrag van piekbelasting binnen mainframe-gebaseerde
-betalingssystemen. Dit bemoeilijkt het gericht optimaliseren van deze systemen en
-kan leiden tot verhoogde responstijden en een verminderde
-verwerkingscapaciteit tijdens piekmomenten.
-}
+Binnen FLIR Systems Belgium wordt CI/CD toegepast om softwareontwikkeling te ondersteunen. Hierbij worden onder andere langdurige geautomatiseerde testen uitgevoerd die meerdere uren tot een volledige dag kunnen duren. Dergelijke testen zijn waardevol voor kwaliteitsbewaking, maar stellen specifieke eisen aan planning, analyse en rapportering binnen de CI/CD-omgeving.
 
-De doelstelling van deze bachelorproef is het analyseren van piekbelasting binnen
-een mainframe-gebaseerd betalingsysteem en het onderzoeken van
-optimalisatietechnieken die de systeemprestaties tijdens piekmomenten kunnen
-verbeteren. Het eindresultaat bestaat uit een technisch rapport met analyse,
-visualisaties en onderbouwde aanbevelingen die toepasbaar zijn binnen een
-bancaire mainframe-context.
+Deze bachelorproef situeert zich in die context en onderzoekt hoe langdurige testen binnen een CI/CD-omgeving op een doordachte manier kunnen worden geanalyseerd, ingepland en gerapporteerd. Daarbij wordt specifiek gekeken naar de rol van Jenkins als CI/CD-platform en naar geautomatiseerde testen uitgevoerd met pytest.
 
 %---------- Probleemstelling --------------------------------------------------
 
 \section{Probleemstelling}
 
 {\color{red}
-Binnen banken spelen mainframe-gebaseerde betalingssystemen een cruciale rol in de
-verwerking van financiële transacties. Tijdens periodes van verhoogd
-betalingsverkeer ontstaat er piekbelasting op deze systemen, wat zich kan uiten
-in verhoogde responstijden, hoge CPU- en I/O-belasting en een verminderde
-verwerkingscapaciteit.
-
-Naast externe factoren, zoals een stijgend aantal gelijktijdige transacties, kan
-ook de interne efficiëntie van bestaande systeemcomponenten bijdragen aan deze
-problematiek. In het bijzonder kunnen legacy COBOL-programma’s binnen de
-SEPA-verwerkingsketen een disproportionele impact hebben op de systeemprestaties
-tijdens piekmomenten. Een gebrek aan inzicht in deze factoren vormt een concreet
-probleem binnen het beheer en de optimalisatie van bancaire
-mainframe-omgevingen.
+Bij FLIR Systems Belgium worden software builds en testen beheerd via een Jenkins-omgeving 
+waarin onder andere nightly tests worden uitgevoerd. Voor de traffic-producten bestaan er 
+echter langdurige testen die tot 24 uur kunnen duren. Deze testen zijn geïmplementeerd 
+in Python en maken gebruik van pytest.
+Momenteel worden deze langdurige testen niet structureel gescheiden van reguliere testcycli. 
+Hierdoor kunnen zij tijdens de werkweek een aanzienlijke belasting vormen voor de build 
+infrastructuur en de master branch. Dit kan leiden tot verminderde beschikbaarheid van 
+resources, tragere feedback voor ontwikkelaars en een verhoogd risico op vertragingen in het 
+ontwikkelproces. 
+Daarnaast is er momenteel geen specifieke rapportering voorzien voor langdurige testen. 
+Ontwikkelaars hebben nood aan duidelijke en betrouwbare feedback over geslaagde en gefaalde 
+testen, zodat zij snel en gericht kunnen reageren op problemen.
+Daarom is er nood aan onderzoek naar hoe langdurige testen beter kunnen worden ingepland en 
+gerapporteerd binnen de bestaande Jenkins-omgeving, waarbij ook wordt onderzocht welke 
+testen op welk moment het best worden uitgevoerd en hoe de aard en resultaten van deze testen 
+geanalyseerd en gerapporteerd kunnen worden.
 }
 
 %---------- Onderzoeksvraag ---------------------------------------------------
@@ -63,24 +39,20 @@ mainframe-omgevingen.
 \section{Onderzoeksvraag}
 
 {\color{red}
-Hoe kan piekbelasting in mainframe-gebaseerde betalingssystemen geanalyseerd
-worden en welke optimalisatietechnieken kunnen de systeemprestaties tijdens
-piekmomenten verbeteren?
+Welke aanpak is het meest geschikt om langdurige pytest-testen binnen de CI/CD-omgeving van FLIR Systems Belgium te analyseren, te plannen en te rapporteren, en hoe kan Jenkins hierin effectief worden ingezet?
 }
 
 \subsection*{Deelvragen – probleemdomein}
 
 {\color{red}
 \begin{enumerate}
-  \item Welke factoren veroorzaken piekbelasting in mainframe
-        betalingssystemen binnen een bancaire omgeving?
-  \item Welke performantiemetrieken zijn relevant om piekbelasting op
-        mainframes te analyseren?
-  \item Hoe manifesteert piekbelasting zich tijdens periodes van verhoogd
-        betalingsverkeer?
-  \item In welke mate dragen bestaande componenten, zoals legacy
-        COBOL-programma’s binnen de SEPA-verwerking, bij aan verhoogd
-        resourcegebruik tijdens piekmomenten?
+  \item Welke types langdurige testen bestaan er binnen de testomgeving van FLIR Systems Belgium en hoe kunnen deze worden gecategoriseerd op basis van kenmerken zoals doel, looptijd en resourcegebruik?
+  \item Hoe is de huidige testomgeving bij FLIR Systems Belgium ingericht met betrekking tot CI/CD en testautomatisering?
+  \item Welke impact hebben langdurige testen op de beschikbare buildresources en op de doorlooptijd van feedback voor ontwikkelaars
+  \item Welke noden en verwachtingen hebben ontwikkelaars en qa (testers) rond testplanning en rapportering?
+  \item Welke kenmerken hebben de huidige langdurige pytest-testen (looptijd, resourcegebruik, frequentie)?
+  \item Hoe beïnvloeden langdurige testen de beschikbaarheid van build resources en de feedbacktijd voor ontwikkelaars?
+  \item Hoe verloopt de huidige rapportering van testresultaten en welke tekortkomingen worden hierbij ervaren?
 \end{enumerate}
 }
 
@@ -89,12 +61,14 @@ piekmomenten verbeteren?
 {\color{red}
 \begin{enumerate}
   \setcounter{enumi}{4}
-  \item Welke technieken en tools kunnen ingezet worden om piekbelasting in
-        mainframe betalingssystemen te analyseren?
-  \item Welke optimalisatiestrategieën kunnen toegepast worden om de prestaties
-        tijdens piekbelasting te verbeteren?
-  \item Wat is het meetbare effect van een geselecteerde optimalisatietechniek
-        in een gesimuleerde of operationele omgeving?
+  \item Welke bestaande CI/CD-tools kunnen ondersteuning bieden voor het plannen en rapporteren van langdurige testen, en hoe verhouden deze zich tot Jenkins binnen de context van FLIR Systems Belgium?
+  \item Welke mogelijkheden biedt Jenkins voor het plannen en automatiseren van langdurige testjobs?
+  \item Welke rapporteringsmogelijkheden biedt pytest voor integratie in CI/CD-omgevingen?
+  \item Welke best practices bestaan er in CI/CD voor het omgaan met langdurige testen?
+  \item Welke mogelijkheden biedt Jenkins voor het plannen en spreiden van langdurige testjobs?
+  \item Welke rapporteringsmogelijkheden bieden pytest en Jenkins voor langdurige testen?
+  \item Welke strategieën bestaan er om langdurige testen op te delen in types of categorieën binnen een CI/CD-context?
+  \item Wat is het effect van een aangepaste planning en rapportering op de bruikbaarheid van testfeedback voor ontwikkelaars?
 \end{enumerate}
 }
 
@@ -102,73 +76,71 @@ piekmomenten verbeteren?
 
 \section{Literatuurstudie}
 \label{sec:literatuurstudie}
+Geautomatiseerd testen binnen CI/CD-omgevingen vormt een belangrijk onderzoeksdomein binnen zowel academische als professionele software-engineeringliteratuur. Continue integratie en continue levering maken het mogelijk om software frequenter en betrouwbaarder vrij te geven, maar stellen tegelijk hoge eisen aan testprocessen en infrastructuur. Onderzoek toont aan dat vooral de tijd en inspanning voor testuitvoering een kritische invloed hebben op de effectiviteit van CI/CD-praktijken \autocite{Shahin2017CICD}.
 
-Piekbelasting en performantieproblemen in grootschalige betalings- en
-transaction processing systemen vormen een belangrijk onderzoeksdomein binnen
-zowel academische als professionele vakliteratuur. Theoretische studies rond
-transaction processing tonen aan dat verhoogde workload, resource contention en
-complexe control flows een significante invloed hebben op responstijden en
-systeembelasting \autocite{SpringerTPPerf}.
+Binnen CI/CD-omgevingen wordt testen beschouwd als een van de belangrijkste succesfactoren. Langdurige of traag uitgevoerde testen kunnen de feedbackcyclus vertragen en zo de ontwikkelproductiviteit negatief beïnvloeden. Langlopende testen worden expliciet benoemd als een belemmering voor efficiënte CI-processen, omdat zij snelle feedback aan ontwikkelaars verhinderen en build-pijplijnen vertragen \autocite{Shahin2017CICD}. Dit benadrukt het belang van een doordachte teststrategie en testplanning.
 
-Binnen mainframe-omgevingen wordt performantieanalyse typisch uitgevoerd aan de
-hand van systeembrede metrieken zoals CPU-gebruik, elapsed time en
-I/O-activiteit. Professionele vakliteratuur beschrijft hoe subsystemen zoals DB2
-een belangrijke rol spelen in de globale systeemprestaties, vooral in omgevingen
-met hoge transactiedichtheid en batchverwerking. IBM Redbooks benadrukken het
-belang van performantiemonitoring en capaciteitsplanning om piekbelasting
-beheersbaar te houden \autocite{IBMRedbookDB29Perf}.
+Daarnaast wijst literatuur op het belang van vroege en continue testuitvoering. De shift-left benadering \autocite{KulkarniShiftLeft} stelt dat defectdetectie zo vroeg mogelijk in de ontwikkelcyclus moet plaatsvinden om kosten en risico’s te beperken. Deze visie ondersteunt het idee dat teststrategieën niet enkel technisch, maar ook organisatorisch doordacht moeten worden ingepland binnen CI/CD-processen.
 
-Naast performantiemetingen op systeemniveau wijst recente academische literatuur
-op de complexiteit van legacy mainframe-toepassingen, in het bijzonder
-COBOL-programma’s met uitgebreide en moeilijk te doorgronden
-control flow-structuren. Agarwal et al.\ tonen aan dat deze complexiteit het
-analyseren van performantieproblemen bemoeilijkt en dat geavanceerde
-analyse- en visualisatietechnieken nodig zijn om inzicht te krijgen in kritieke
-codepaden en functionele hotspots \autocite{Agarwal2024ASE}.
+Recente studies tonen verder aan dat geautomatiseerd testen bijdraagt aan snellere ontwikkelcycli \autocite{YangCICDEfficiency}, hogere codekwaliteit en betere samenwerking binnen teams. Geautomatiseerde testen verminderen menselijke fouten en maken continue validatie \autocite{EstherAutomatedTesting} van software mogelijk. Tegelijk benadrukt vakliteratuur dat duidelijke rapportering en zichtbaarheid van testresultaten essentieel zijn om ontwikkelaars bruikbare feedback te geven en snelle probleemdetectie mogelijk te maken \autocite{Shahin2017CICD}.
 
-Hoewel bestaande studies waardevolle inzichten bieden in performantieanalyse en
-applicatiecomplexiteit, ligt de focus vaak op algemene transaction processing
-systemen of moderniseringsvraagstukken. Er is minder onderzoek dat expliciet
-ingaat op piekbelasting binnen mainframe-gebaseerde betalingssystemen in een
-bancaire context, waarbij operationele meetgegevens worden gekoppeld aan zowel
-systeem- als applicatiecomponenten. Dit onderzoek onderscheidt zich door die
-specifieke focus en door de analyse van piekbelasting in relatie tot SEPA Direct
-Debit-verwerking binnen een operationele mainframe-omgeving.
+Hoewel bestaande studies waardevolle inzichten bieden in CI/CD en testautomatisering, ligt de focus vaak op algemene teststrategieën of brede DevOps-implementaties. Er is minder onderzoek dat zich specifiek richt op het plannen, analyseren en rapporteren van langdurige testen binnen industriële CI-omgevingen. Dit onderzoek onderscheidt zich door die specifieke focus en door het onderzoeken van hoe langdurige testen strategisch kunnen worden ingepland en gerapporteerd binnen een bestaande CI-omgeving.
 
 %---------- Methodologie ------------------------------------------------------
 
 \section{Methodologie}
 \label{sec:methodologie}
+Dit onderzoek wordt uitgevoerd volgens een combinatie van literatuuronderzoek en praktijkgericht onderzoek binnen de testomgeving van FLIR Systems Belgium.
 
-Dit onderzoek volgt een toegepast onderzoeksmodel en vertrekt vanuit een concrete
-probleemsituatie binnen een bancaire mainframe-omgeving. In een eerste fase wordt
-een literatuurstudie uitgevoerd rond piekbelasting, performantieanalyse en
-optimalisatietechnieken binnen mainframe betalingssystemen.
+\subsection{Analyse van de huidige situatie}
 
-In het praktijkgerichte luik wordt, indien mogelijk, een gesimuleerde
-piekbelasting opgezet binnen een test- of simulatieomgeving. Tijdens deze
-simulatie worden performantiemetingen uitgevoerd met aandacht voor CPU-,
-I/O- en responstijdmetingen. Indien mogelijk wordt ook bestaande legacy
-COBOL-code binnen een SEPA-context geanalyseerd om performantiegevoelige
-componenten te identificeren. Indien een volledige simulatie niet haalbaar
-blijkt, wordt de analyse uitgevoerd op basis van beschikbare meetgegevens en
-historische performantiemetingen uit de operationele omgeving.
+In een eerste fase wordt de huidige testomgeving geanalyseerd om het probleem duidelijk in kaart te brengen. Hierbij wordt onderzocht hoe langdurige testen momenteel worden uitgevoerd binnen de bestaande CI/CD-omgeving en welke knelpunten zich daarbij voordoen. Er wordt gekeken naar de configuratie van Jenkins, de aard en kenmerken van de langdurige testen, de impact ervan op de beschikbare infrastructuur en de huidige manier van rapportering. Deze analyse gebeurt op basis van beschikbare documentatie en gesprekken met betrokken ontwikkelaars.
 
-Vervolgens wordt een gerichte optimalisatie toegepast, waarna de metingen opnieuw
-worden uitgevoerd. De resultaten vóór en na de optimalisatie worden met elkaar
-vergeleken om het effect van de gekozen ingreep te evalueren.
+\subsection{Literatuurstudie}
+
+Vervolgens wordt gerichte vakliteratuur bestudeerd rond CI/CD, testautomatisering en het omgaan met langdurige testen binnen buildomgevingen, met als doel inzicht te verkrijgen in gangbare strategieën en best practices. Daarnaast wordt de technische documentatie van Jenkins, pytest en andere relevante tools geanalyseerd om de beschikbare functionaliteiten voor testplanning, automatisering en rapportering in kaart te brengen.
+
+\subsection{Ontwerp van een aanpak}
+
+Op basis van de analyse en literatuurstudie wordt een geschikte aanpak ontworpen voor het plannen en rapporteren van langdurige testen. Hierbij wordt rekening gehouden met de noden van ontwikkelaars en de bestaande infrastructuur.
+
+\subsection{Proof of Concept}
+
+De voorgestelde aanpak wordt gevalideerd via een proof of concept binnen Jenkins. Hierbij wordt een testopstelling uitgewerkt waarin langdurige testen automatisch buiten de werkweek worden ingepland en waarbij testresultaten gestructureerd worden gerapporteerd.
+
+\subsection{Evaluatie}
+
+Tot slot wordt geëvalueerd in welke mate de voorgestelde aanpak bijdraagt aan:
+
+\begin{itemize}
+    \item een betere spreiding van testbelasting
+    \item bruikbare en duidelijke rapportering
+    \item verbeterde feedback voor ontwikkelaars
+\end{itemize}
+
+De evaluatie gebeurt aan de hand van vooraf bepaalde criteria zoals testdoorlooptijd, beschikbaarheid van buildresources en overzichtelijkheid van rapportering.
+
 
 %---------- Verwachte resultaten ---------------------------------------------
 
 \section{Verwacht resultaat en conclusie}
 \label{sec:verwachte_resultaten}
 
-Het verwachte resultaat van deze bachelorproef is een duidelijk inzicht in de
-oorzaken en impact van piekbelasting binnen mainframe-gebaseerde
-betalingssystemen. Door analyse en visualisatie van performantiemetingen worden
-kritieke knelpunten geïdentificeerd.
+Deze bachelorproef beoogt een onderbouwde aanpak voor het plannen en rapporteren van 
+langdurige testen binnen de CI/CD-omgeving van FLIR Systems Belgium. Het verwachte 
+resultaat is in de eerste plaats een proof of concept waarin wordt aangetoond dat langdurige 
+pytest-testen via Jenkins automatisch buiten de werkweek kunnen worden uitgevoerd.
 
-De bachelorproef resulteert in een technisch rapport met concrete aanbevelingen
-voor het optimaliseren van mainframe betalingssystemen tijdens piekbelasting.
-Deze aanbevelingen bieden een meerwaarde voor IT-professionals die betrokken zijn
-bij het beheer en de optimalisatie van dergelijke systemen.
+Daarnaast wordt verwacht dat de bachelorproef inzicht biedt in hoe rapportering van langdurige 
+testen overzichtelijker en bruikbaarder kan worden gemaakt voor ontwikkelaars. Dit moet 
+ontwikkelaars toelaten om sneller inzicht te krijgen in geslaagde en gefaalde testen en gerichter 
+te reageren op problemen.
+
+Verder wordt verwacht dat het onderzoek leidt tot een duidelijk advies en een concrete aanpak 
+waarmee het bedrijf zelfstandig verder kan werken. De bachelorproef moet richting geven aan 
+hoe langdurige testen structureel kunnen worden ingepland en opgevolgd binnen de bestaande 
+infrastructuur. 
+
+Indien haalbaar wordt ook nagegaan of er indicaties zijn van verbeteringen in resourcegebruik en 
+tijdswinst. Deze metingen zijn echter ondersteunend en niet het hoofddoel van het onderzoek.
+
